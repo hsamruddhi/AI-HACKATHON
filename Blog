@@ -1,1 +1,43 @@
+1.
+we are a part of Tr and trnsac reporting where executing business rule is crucial for reprottobthe regulatory bodies.
+these rules change often and updating them manually takes alot if time and efforts.
+This has motivated us to come up with a solution where we hve developed a new approach using AI powered technology.
+so let's get started.
+
+2.
+we are familiar with this SDLC diagram where it required a lot of communication and iterations for each change.
+There's a HIGH MANPOWER COST - as multiple roles are involved from business analyst to developers and testers.
+There is a LENGTHY DEV CYCLE - Bcz writing wach rulenmanually significantly extemds the timelines.
+As the complexity of rules increases, so does the Time and Effort for writing testing and validating it.
+
+3.
+so basically iur solution directly addresses these pain points by automating rule code generation process using spring open ai
+This automation reduced the time spent on coding, It eliminates the need for writing drl files and it accelerates the whole process...
+which drastically reduces mean-time-to-market, efforts, manpower... while ensuring Speed, accuracy and business efficiency. 
+It has improoved the productivity and provieed high code quality.
+Also this prototype can be easily integrated into any Java based project.
+
+4.
+Lets see what business value our solution brings as compared to the traditional manual approach:
+Usually our business processes executes ~200+ rules for each regulation.
+these rukes are categorised into different complexity levels.
+- about 30% are the simple rules 
+- 50% are medium level rules
+- remaining 20% are complex rules 
+these rules requires several hours and sometimes full day for the developer to complete.
+however our AI driven solution generates these rules within seconds, allowing us to do faster delivery and add on efficiency.
+
+For writing test cases, earlier it used to take ~1/2 hours , but with AI automation, testing is done instantly.
+
+Also human involvement has been reduced to minimal levels..
+
+
+Along with these pros and cons, there are some risks associated with our solution:
+- we hv seen that accuracy is not guaranteed.
+- Manual reviews are necessary to validate the accuracy and completeness of rules generated.
+- test cases reviews are required to ensure all positive/negative snd functione scenarios are covered.
+- there's a dependency on cucumber framework to mitigate the issues...
+
+
+
 
