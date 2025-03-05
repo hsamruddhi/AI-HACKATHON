@@ -1,0 +1,99 @@
+You can create a generic exception handling mechanism using @ControllerAdvice in Spring Boot. This approach ensures that all exceptions across your REST microservice are handled centrally and in a consistent manner.
+
+Here’s how you can implement it:
+
+1. Define a Global Exception Handler using @ControllerAdvice
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+
+import java.net.URI;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> handleGenericException(Exception ex, WebRequest request) {
+        ApiError apiError = ApiError.builder()
+                .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .errorCode("INTERNAL_SERVER_ERROR")  // Use a generic error code
+                .title("An unexpected error occurred")
+                .details(ex.getMessage())
+                .instance(URI.create(request.getDescription(false)))  // Capture request details
+                .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(CustomException.class)  // Replace with your custom exception class
+    public ResponseEntity<ApiError> handleCustomException(CustomException ex, WebRequest request) {
+        ApiError apiError = ApiError.builder()
+                .httpStatus(ex.getStatus().value())
+                .errorCode(ex.getErrorCode().value())  // Fetch from ErrorCode interface
+                .title(ex.getTitle())
+                .details(ex.getMessage())
+                .instance(URI.create(request.getDescription(false)))
+                .build();
+
+        return new ResponseEntity<>(apiError, ex.getStatus());
+    }
+}
+
+
+---
+
+2. Define a Custom Exception Class
+
+If needed, create a specific exception class that extends RuntimeException:
+
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
+
+@Getter
+public class CustomException extends RuntimeException {
+    private final HttpStatus status;
+    private final ErrorCode errorCode;
+    private final String title;
+
+    public CustomException(HttpStatus status, ErrorCode errorCode, String title, String message) {
+        super(message);
+        this.status = status;
+        this.errorCode = errorCode;
+        this.title = title;
+    }
+}
+
+
+---
+
+3. Usage Example
+
+Now, anywhere in your service or controller, you can throw:
+
+throw new CustomException(HttpStatus.BAD_REQUEST, MyErrorCodes.INVALID_INPUT, "Invalid Request", "The provided input is not valid");
+
+This will be automatically handled by the GlobalExceptionHandler, returning a structured ApiError response.
+
+
+---
+
+Why This Approach?
+
+1. Centralized Exception Handling - All exceptions are handled in one place.
+
+
+2. Standardized Error Response - Uses ApiError to maintain consistency.
+
+
+3. Supports Custom Exception Handling - Can define custom exceptions as needed.
+
+
+4. Logs Error Details - Captures the request URI and exception message for debugging.
+
+
+
+Let me know if you need any modifications!
+
