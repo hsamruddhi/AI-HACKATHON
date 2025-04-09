@@ -1,0 +1,52 @@
+
+```sql
+SELECT
+    -- Include your existing columns
+    other_columns,
+    validation_status,
+    
+    -- For FAILED records, extract problems as you currently do
+    CASE 
+        WHEN validation_status = 'FAILED' THEN droit_response['problems']
+        ELSE NULL
+    END as problems,
+    
+    -- Add the new output column
+    CASE 
+        WHEN validation_status = 'PASSED' THEN droit_response['output'] 
+        ELSE NULL
+    END as output
+FROM your_table
+-- Then conditionally flatten based on validation status
+LEFT JOIN (
+    SELECT flatten(problems) as flattened_problems
+    FROM your_table
+    WHERE validation_status = 'FAILED'
+) problems_flattened ON 1=1 AND validation_status = 'FAILED'
+```
+
+Alternatively, you could use a UNION approach:
+
+```sql
+-- Query for FAILED validations (your current query)
+SELECT
+    other_columns,
+    validation_status,
+    droit_response['problems'] as problems,
+    flatten(problems) as flattened_problems,
+    NULL as output
+FROM your_table
+WHERE validation_status = 'FAILED'
+
+UNION ALL
+
+-- Query for PASSED validations
+SELECT
+    other_columns,
+    validation_status,
+    NULL as problems,
+    NULL as flattened_problems,
+    droit_response['output'] as output
+FROM your_table
+WHERE validation_status = 'PASSED'
+```
