@@ -91,3 +91,24 @@ POC 2 lacks clarity on how it will address replay and recovery, especially given
 Conclusion
 
 While POC 2’s centralized design simplifies UC term provisioning, it introduces significant challenges in integration with POC 1’s pipeline. Key service maturity aspects like monitoring, observability, scalability, and robust data handling are underdeveloped in POC 2. Adapting POC 2 to match POC 1’s maturity and integration requirements will demand substantial effort, including reengineering pipelines, enhancing monitoring, and addressing data handling gaps.
+
+
+*****
+
+
+
+
+
+I wanted to share my observations and concerns regarding the POD structure model in our department. While I appreciate the efforts of my colleagues, I've noticed that some senior POD leads may not possess the technical skills expected at their level.
+
+I've observed that some POD leads rely heavily on junior members for basic tasks.
+
+A recent example is the HashiCorp Vault initiative I’ve been driving within TNTR. Despite conducting five to six knowledge-sharing sessions, most questions and doubts are raised privately over 1:1 chats post-call rather than in the shared forum, which hinders transparency and collaborative learning. Many of these queries are quite basic and could have been addressed more efficiently in the group sessions.
+
+Additionally, there have been instances where POD leads struggle with tasks like setting up a data source in Grafana, even after the process has been explained. This not only adds to my workload but also indicates a potential misalignment between role expectations and current capabilities.
+
+
+I believe it’s important to assign responsibilities to individuals who are both technically capable and proactively engaged. Recognizing and empowering the right people will enhance the overall efficiency and morale of the team.
+
+
+
