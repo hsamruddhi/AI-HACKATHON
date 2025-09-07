@@ -33,3 +33,100 @@ snap AS (
 )
 SELECT *
 FROM active_files, total_files, snap;
+
+
+
+×××××××××××××××
+
+2)
+For daily growth metrics in Iceberg, we can again use the metadata tables – specifically snapshots and files.
+
+
+---
+
+🔑 Idea
+
+Each snapshot records which files were added/removed.
+
+In Iceberg’s metadata, the files table only reflects the current snapshot, while all_files contains all historical files.
+
+To compute daily growth, you need the snapshot-level changes from the snapshots and manifests metadata.
+
+
+In Spark SQL, Iceberg exposes:
+
+my_table.snapshots → snapshot timestamps
+
+my_table.manifests → manifest files per snapshot
+
+my_table.all_data_files (sometimes just all_files) → contains file add timestamps (if Iceberg version ≥ 0.14).
+
+
+
+---
+
+✅ Option 1: If your Iceberg version has all_data_files table (preferred)
+
+This table stores each data file with added_snapshot_id.
+You can join with snapshots to get the commit date.
+
+WITH file_commits AS (
+    SELECT f.record_count,
+           f.file_size_in_bytes,
+           s.committed_at::date AS commit_date
+    FROM my_table.all_data_files f
+    JOIN my_table.snapshots s
+      ON f.added_snapshot_id = s.snapshot_id
+)
+SELECT commit_date,
+       SUM(record_count)     AS records_added,
+       COUNT(*)              AS files_added,
+       SUM(file_size_in_bytes) AS storage_added_bytes
+FROM file_commits
+GROUP BY commit_date
+ORDER BY commit_date;
+
+
+---
+
+✅ Option 2: If you only have files + snapshots
+
+Then you need to look at history or snapshots to approximate growth. You can compute table size at each snapshot and then take the daily delta.
+
+WITH snapshot_sizes AS (
+    SELECT s.snapshot_id,
+           s.committed_at::date AS commit_date,
+           SUM(f.record_count) AS total_records,
+           SUM(f.file_size_in_bytes) AS total_storage,
+           COUNT(*) AS total_files
+    FROM my_table.files f
+    JOIN my_table.snapshots s
+      ON f.snapshot_id = s.snapshot_id
+    GROUP BY s.snapshot_id, s.committed_at::date
+)
+SELECT commit_date,
+       (total_records - LAG(total_records, 1, 0) OVER (ORDER BY commit_date)) AS records_added,
+       (total_files - LAG(total_files, 1, 0) OVER (ORDER BY commit_date))     AS files_added,
+       (total_storage - LAG(total_storage, 1, 0) OVER (ORDER BY commit_date)) AS storage_added_bytes
+FROM snapshot_sizes
+ORDER BY commit_date;
+
+
+---
+
+📊 This gives you:
+
+records_added per day
+
+files_added per day
+
+storage_added_bytes per day
+
+
+
+---
+
+
+
+
+
