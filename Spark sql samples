@@ -123,6 +123,17 @@ files_added per day
 storage_added_bytes per day
 
 
+SELECT 
+    DATE(s.committed_at) AS commit_date,
+    SUM(df.record_count) AS daily_records_added,
+    COUNT(df.file_path)  AS daily_files_added,
+    SUM(df.file_size_in_bytes) AS daily_size_added_bytes
+FROM my_table.snapshots s
+JOIN my_table.data_files df 
+    ON s.snapshot_id = df.snapshot_id   -- some catalogs call this df.added_snapshot_id
+GROUP BY DATE(s.committed_at)
+ORDER BY commit_date;
+
 
 ---
 
