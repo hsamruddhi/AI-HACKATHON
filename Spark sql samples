@@ -1,0 +1,35 @@
+This will give you a single row summary with:
+
+active_files
+active_storage_bytes
+total_records
+avg_file_size
+total_files
+total_storage_bytes
+first_snapshot_ts
+last_snapshot_ts
+total_snapshots
+
+
+SQL =
+
+WITH active_files AS (
+    SELECT COUNT(*) AS active_files,
+           SUM(file_size_in_bytes) AS active_storage_bytes,
+           SUM(record_count) AS total_records,
+           AVG(file_size_in_bytes) AS avg_file_size
+    FROM my_table.files
+),
+total_files AS (
+    SELECT COUNT(*) AS total_files,
+           SUM(file_size_in_bytes) AS total_storage_bytes
+    FROM my_table.all_files
+),
+snap AS (
+    SELECT MIN(committed_at) AS first_snapshot_ts,
+           MAX(committed_at) AS last_snapshot_ts,
+           COUNT(*) AS total_snapshots
+    FROM my_table.snapshots
+)
+SELECT *
+FROM active_files, total_files, snap;
