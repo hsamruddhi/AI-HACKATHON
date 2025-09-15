@@ -1,0 +1,201 @@
+Perfect — you’re asking for a complete set of monitoring & alerting queries for Iceberg tables using Dremio. I’ll structure this so you have queries at different levels (files, partitions, manifests, snapshots, table) plus some extra anomaly-detection queries.
+
+
+---
+
+🔍 Monitoring & Alerting Queries for Iceberg Tables in Dremio
+
+
+---
+
+1. File-Level Monitoring
+
+Check file growth, size, and record counts.
+
+-- Daily files added
+SELECT 
+  DATE(from_unixtime(f.data_file.creation_time / 1000)) AS day,
+  COUNT(*) AS files_added,
+  SUM(f.data_file.file_size_in_bytes) AS total_file_size,
+  SUM(f.data_file.record_count) AS records_added
+FROM TABLE.files('<table_name>') f
+GROUP BY 1
+ORDER BY 1 DESC;
+
+-- Detect too many small files (<64MB)
+SELECT 
+  COUNT(*) AS small_files
+FROM TABLE.files('<table_name>')
+WHERE data_file.file_size_in_bytes < 64*1024*1024;
+
+
+---
+
+2. Partition-Level Monitoring
+
+Monitor data distribution across partitions.
+
+-- Partition growth by day
+SELECT 
+  partition.data AS partition_value,
+  COUNT(*) AS files,
+  SUM(data_file.file_size_in_bytes) AS total_size,
+  SUM(data_file.record_count) AS records
+FROM TABLE.files('<table_name>')
+GROUP BY partition.data
+ORDER BY total_size DESC;
+
+-- Skew detection (partitions too large/small compared to average)
+WITH partition_stats AS (
+  SELECT 
+    partition.data AS partition_value,
+    SUM(data_file.file_size_in_bytes) AS total_size
+  FROM TABLE.files('<table_name>')
+  GROUP BY partition.data
+)
+SELECT 
+  partition_value,
+  total_size,
+  (SELECT AVG(total_size) FROM partition_stats) AS avg_size,
+  (total_size - (SELECT AVG(total_size) FROM partition_stats)) / (SELECT AVG(total_size) FROM partition_stats) * 100 AS deviation_pct
+FROM partition_stats
+ORDER BY deviation_pct DESC;
+
+
+---
+
+3. Manifest-Level Monitoring
+
+Track manifest file count and size (too many manifests = query slowdown).
+
+-- Manifest file growth
+SELECT 
+  DATE(from_unixtime(m.added_snapshot_id / 1000)) AS day,
+  COUNT(*) AS manifest_files,
+  SUM(m.file_size_in_bytes) AS total_size
+FROM TABLE.manifests('<table_name>') m
+GROUP BY 1
+ORDER BY 1 DESC;
+
+-- Detect oversized manifests (> 100 MB)
+SELECT *
+FROM TABLE.manifests('<table_name>')
+WHERE file_size_in_bytes > 100*1024*1024;
+
+
+---
+
+4. Snapshot-Level Monitoring
+
+Track how many snapshots exist and their size impact.
+
+-- Snapshot history
+SELECT 
+  snapshot_id,
+  parent_id,
+  operation,
+  DATE(from_unixtime(committed_at / 1000)) AS commit_date,
+  manifest_list,
+  summary['added-files'] AS files_added,
+  summary['removed-files'] AS files_removed,
+  summary['added-records'] AS records_added,
+  summary['removed-records'] AS records_removed
+FROM TABLE.snapshots('<table_name>')
+ORDER BY committed_at DESC;
+
+-- Detect too many snapshots (consider expiring old ones)
+SELECT COUNT(*) AS total_snapshots
+FROM TABLE.snapshots('<table_name>');
+
+
+---
+
+5. Table-Level Monitoring
+
+Overall growth metrics.
+
+-- Daily record growth
+SELECT 
+  DATE(from_unixtime(committed_at / 1000)) AS day,
+  SUM(CAST(summary['added-records'] AS BIGINT)) AS records_added,
+  SUM(CAST(summary['removed-records'] AS BIGINT)) AS records_removed
+FROM TABLE.snapshots('<table_name>')
+GROUP BY 1
+ORDER BY 1 DESC;
+
+-- Table size over time
+SELECT 
+  DATE(from_unixtime(f.data_file.creation_time / 1000)) AS day,
+  SUM(f.data_file.file_size_in_bytes) AS table_size
+FROM TABLE.files('<table_name>') f
+GROUP BY 1
+ORDER BY 1 DESC;
+
+
+---
+
+⚠️ Extra Anomaly Detection Queries
+
+1. Small File Explosion
+
+
+
+SELECT COUNT(*) AS small_files
+FROM TABLE.files('<table_name>')
+WHERE data_file.file_size_in_bytes < 32*1024*1024;
+
+2. Partition Skew (one partition > 5x average size)
+
+
+
+WITH partition_stats AS (
+  SELECT partition.data AS partition_value,
+         SUM(data_file.file_size_in_bytes) AS total_size
+  FROM TABLE.files('<table_name>')
+  GROUP BY partition.data
+)
+SELECT *
+FROM partition_stats
+WHERE total_size > 5 * (SELECT AVG(total_size) FROM partition_stats);
+
+3. Stale Snapshots (older than 30 days not expired)
+
+
+
+SELECT *
+FROM TABLE.snapshots('<table_name>')
+WHERE committed_at < (UNIX_TIMESTAMP() - 30*24*60*60)*1000;
+
+4. Too Many Manifests (trigger rewrite_manifests job)
+
+
+
+SELECT COUNT(*) AS manifest_count
+FROM TABLE.manifests('<table_name>');
+
+5. High Snapshot Churn (too frequent commits)
+
+
+
+SELECT DATE(from_unixtime(committed_at/1000)) AS day,
+       COUNT(*) AS commits
+FROM TABLE.snapshots('<table_name>')
+GROUP BY 1
+HAVING COUNT(*) > 50  -- threshold
+ORDER BY day DESC;
+
+
+---
+
+✅ With these queries, you can:
+
+Monitor growth and size trends (file/partition/manifest/snapshot/table).
+
+Alert when anomalies happen (too many small files, skewed partitions, excessive snapshots/manifests).
+
+
+
+---
+
+Would you like me to also design a dashboard layout (e.g., file growth, snapshot churn, partition skew) so you can visualize these metrics directly in Dremio or Grafana?
+
