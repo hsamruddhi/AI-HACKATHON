@@ -1,0 +1,89 @@
+Perfect — you’ve already got excellent and detailed content.
+Here’s a professionally structured, ready-to-use resume draft based on your details, organized, concise, and properly formatted for a 6+ years experienced developer in Banking & Finance domain (Java + Cloud + Data Engineering focus).
+You can copy this into Word or Google Docs — I’ll format it as text for now (I can also give you a Word-formatted version if you’d like).
+Samruddhi Agone
+📞 +91-XXXXXXXXXX | ✉️ samruddhi.agone@email.com | 🌐 LinkedIn: linkedin.com/in/samruddhiagone | 📍 Pune, India
+Professional Summary
+Results-driven Consultant Specialist with 6+ years of experience in software development within the Banking and Finance domain, specializing in Java-based microservices, data engineering, and cloud-native solutions.
+Proficient in designing and delivering scalable, high-performance systems using Java, Spring Boot, AWS, Docker, Kubernetes, React JS, and Apache Iceberg. Adept at driving automation, reducing operational overhead, and ensuring system resilience.
+A strong team player with excellent analytical and problem-solving skills, experienced in managing end-to-end development cycles, mentoring team members, and collaborating across global business units.
+Technical Skills
+Category
+Technologies / Tools
+Programming Languages & Frameworks
+Java, J2EE, Spring Boot, Spring Cloud, Spring MVC, Spring Security, Python, Groovy
+UI Technologies
+React JS, HTML, CSS, Bootstrap
+Databases / Data Lake
+PostgreSQL, MySQL, Oracle, Apache Iceberg (on AWS S3)
+Cloud Platforms
+AWS (S3, Lambda, Beanstalk, EC2), Azure, GCP
+Build & Deployment
+Jenkins, Docker, Kubernetes, PCF, Shell Scripts, Ansible
+Monitoring & Observability
+Grafana, InfluxDB, Loki, Telegraf, AlertManager, Micrometer, Zipkin, Sleuth
+Web Services
+RESTful APIs
+Version Control
+Git, Stash
+Tools & IDEs
+IntelliJ IDEA, VS Code, Eclipse, PyCharm, Notepad++, JIRA, Confluence, Putty, WinSCP
+Other Areas
+CI/CD Automation, Data Streaming, OOPs Design, R&D, Microservice Architecture
+Professional Experience
+HSBC Technology India
+Consultant Specialist | July 2019 – Present | Pune, India
+Project: Regulatory Reporting & Controls Platform (RRCP)
+Role: Full Stack Developer | Team Size: 10
+Objective:
+Microservices-based trade reporting platform for T+1 reporting, designed to replace legacy systems and ensure scalability, regulatory compliance, and cost efficiency.
+Key Contributions:
+Designed and delivered microservices and data pipelines using Spring Boot, Spring Streaming, PostgreSQL, and Apache Iceberg.
+Implemented dynamic compaction and partitioning strategies in Iceberg tables, improving query performance and reducing storage costs by ~40%.
+Automated data archival and remediation workflows, cutting manual effort by 50%.
+Built observability stack with Grafana, InfluxDB, Loki, and AlertManager for proactive issue detection and resolution.
+Deployed applications on Kubernetes and AWS ECS, ensuring zero-downtime rollouts.
+Developed React-based UI dashboards for trade monitoring and platform health visualization.
+Led 1000+ readiness checks for multiple regulatory go-lives, ensuring SLA adherence and risk mitigation.
+Conducted post-production validations and issue triage to ensure compliance with regulatory timelines.
+Delivered utility design demos to Business and Operations groups, improving collaboration and feature adoption.
+Mentored new joiners and led cross-team knowledge-sharing sessions on Observability, Monitoring, and Resilience.
+Project: Data Service Layer (DSL)
+Role: Java Developer & Support Engineer | Team Size: 10
+Objective:
+DSL acts as a “Contribution Platform” for trade data transformation and distribution to external regulators, enabling consistent and accurate reporting.
+Key Contributions:
+Designed and developed high-quality Java services for trade data transformation and regulatory submission.
+Enhanced monitoring and alerting using Python automation scripts integrated with Grafana dashboards.
+Integrated JIRA with Jenkins to automate the entire CR lifecycle (Creation → Approval → Closure), improving release efficiency.
+Prepared high/low-level design documents and testing artifacts for enhancements and defect fixes.
+Provided production support and rapid defect resolution, minimizing incident turnaround times.
+Implemented continuous improvement tasks, increasing platform reliability and developer productivity.
+Awards & Achievements
+🏆 ACE (Award to Celebrate Excellence) – HSBC Technology Annual Event 2024
+⭐ Star Performer Award – Multiple recognitions for outstanding project delivery
+👏 Pat on the Back Award – For exemplary performance and dedication
+🥇 Circle of Excellence (Team Award) – For proactive cross-team collaboration
+🎤 Conducted multiple knowledge-sharing sessions across departments (FDR Huddle, T&TR Meetups, Cross-POD Upskilling Sessions)
+💡 Semi-finalist in MSS Hackathon 2024 and pre-finalist in AWS DeepRacer 2024
+🤝 Appreciated by onsite-offshore leads for resolving critical escalations and stabilizing production systems
+🧠 Deputed to HSBC Operations, Bangalore, for training and implementation feedback integration
+🎯 Organized sub-department Family Day event (2019) at HSBC Technology
+Education
+Bachelor of Engineering (Information Technology)
+University of Pune | Year of Completion: XXXX
+Certifications
+AWS Fundamentals – Core Services
+Kubernetes for Developers (Intermediate Level)
+Advanced Java with Spring Boot (Internal Certification)
+Soft Skills
+Strong analytical and problem-solving ability
+Excellent communication and stakeholder management
+Quick learner, adaptable to emerging technologies
+Collaborative and proactive team player
+✅ Summary of Impact:
+Delivered multiple high-visibility regulatory and platform projects that reduced manual effort by 50%, optimized costs through automation, and enhanced system resilience and observability across HSBC’s trade reporting platforms.
+Would you like me to:
+Create this as a Word (.docx) file with professional formatting and section alignment,
+or
+Give a shorter, 2-page condensed version (ideal for job applications)?
