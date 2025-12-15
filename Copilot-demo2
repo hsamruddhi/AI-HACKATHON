@@ -1,0 +1,129 @@
+Perfect. Below is a crisp, 10-minute, leadership-friendly demo script with exact Copilot prompts you can copy-paste or speak live.
+It’s structured so you never switch context and always stay within one use case (Trade Search API).
+Tone is professional and polished, suitable for a Head of Department.
+🕒 10-Minute GitHub Copilot Live Demo Script
+Use Case: Build a Trade Search REST API (Java + Spring Boot)
+IDE: IntelliJ IDEA
+⏱️ Minute 0–1: Opening (Context Setting)
+What you say:
+“I’ll demonstrate how GitHub Copilot assists a developer in day-to-day work using one realistic use case.
+We’ll build a Trade Search API step by step, and Copilot will assist at every stage — from code generation to testing and debugging.”
+⏱️ Minute 1–2: Controller Creation (Intent → Code)
+Action:
+Create TradeSearchController.java
+Type this comment:
+Copy code
+Java
+// REST controller to search trades based on dynamic criteria
+// Supports search by tradeId, batchId, status, and date range
+Wait → Accept Copilot suggestion
+What Copilot generates (approx):
+@RestController
+@RequestMapping
+@PostMapping
+Method signature
+Say:
+“Instead of writing boilerplate, I describe intent. Copilot generates a production-ready controller structure instantly.”
+⏱️ Minute 2–3: Request DTO + Validation
+Create: TradeSearchRequest.java
+Type:
+Copy code
+Java
+// Request DTO for trade search with validation annotations
+Accept suggestions
+Copilot generates:
+Fields
+@NotNull, @Size
+LocalDate ranges
+Enum fields
+Say:
+“Copilot applies best practices by default, such as validation, which directly improves API reliability.”
+⏱️ Minute 3–4: Service Layer Logic
+Create: TradeService.java
+Type:
+Copy code
+Java
+public List<Trade> searchTrades(TradeSearchRequest request) {
+Let Copilot continue
+Say:
+“Copilot understands project context and writes readable business logic instead of just syntactically correct code.”
+⏱️ Minute 4–5: Repository + SQL Assistance
+Open Repository Interface
+Type comment:
+Copy code
+Java
+// Fetch trades dynamically based on optional search criteria
+OR ask via Copilot Chat (recommended for impact):
+📌 Copilot Chat Prompt:
+Copy code
+Text
+Generate a JPA repository method or native SQL query
+to search trades using optional parameters:
+tradeId, batchId, status, fromDate, toDate.
+Avoid unnecessary OR conditions.
+Say:
+“This reduces time spent crafting and debugging SQL and improves query quality.”
+⏱️ Minute 5–6: Explain Code (Knowledge Sharing)
+Select a complex method
+Copilot Chat Prompt:
+Copy code
+Text
+Explain this method in simple terms and list edge cases handled.
+Say:
+“This is extremely useful for onboarding, handovers, and code reviews.”
+⏱️ Minute 6–7: Error Fixing (Live Scenario)
+Introduce a small error (wrong import / missing return)
+Copilot Chat Prompt:
+Copy code
+Text
+Fix the compilation error and explain why it occurred.
+Say:
+“Developers fix issues faster while learning from the explanation.”
+⏱️ Minute 7–8: Unit Test Generation (High Leadership Impact)
+Open TradeService
+Copilot Chat Prompt:
+Copy code
+Text
+Generate JUnit 5 tests for this service.
+Cover valid input, empty results, and invalid request scenarios.
+Use Mockito where required.
+Say:
+“Test creation, which often gets delayed, becomes almost effortless.”
+⏱️ Minute 8–9: Refactoring & Code Review
+Select a method
+Copilot Chat Prompt:
+Copy code
+Text
+Refactor this method to improve readability and maintainability.
+Optional Prompt:
+Copy code
+Text
+Review this code and suggest improvements as part of a code review.
+Say:
+“Copilot acts like a second reviewer, helping maintain consistent code quality.”
+⏱️ Minute 9–10: Documentation & Wrap-Up
+Copilot Chat Prompt:
+Copy code
+Text
+Add JavaDoc for this controller and service method.
+Closing Statement:
+“This was one everyday development task.
+Copilot didn’t replace decision-making — it accelerated execution, improved quality, and reduced repetitive effort.”
+🎯 Summary Slide (What You Covered)
+You can confidently say you demonstrated:
+Code generation from natural language
+Inline suggestions
+Copilot Chat (Explain / Fix / Refactor)
+SQL & repository assistance
+Unit test generation
+Error resolution
+Code review support
+Documentation generation
+💡 Final Tip for Live Demo
+Keep Copilot Chat docked and say:
+“This is how developers actually use Copilot daily — not as magic, but as an intelligent assistant.”
+If you want next, I can:
+Create backup prompts in case suggestions don’t appear
+Give a 1-slide executive summary
+Help you practice a 30-second closing pitch
+Just say the word.
