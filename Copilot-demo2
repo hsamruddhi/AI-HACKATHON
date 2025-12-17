@@ -127,3 +127,28 @@ Create backup prompts in case suggestions don’t appear
 Give a 1-slide executive summary
 Help you practice a 30-second closing pitch
 Just say the word.
+
+
+××××××÷÷××××÷÷÷
+
+
+
+Act as a senior Java backend developer.
+
+Create a production-ready Spring Boot application that exposes a REST API to search trades.
+
+Requirements:
+- Use Spring Boot, Java 17, and standard Spring best practices
+- Expose a POST REST endpoint: /api/trades/search
+- Accept a request body with optional search criteria:
+  tradeId, batchId, status, fromDate, toDate
+- Apply input validation using Jakarta validation annotations
+- Implement a layered architecture:
+  Controller → Service → Repository
+- Use JPA with a dynamic query (JPQL or Criteria API) to handle optional parameters efficiently
+- Return appropriate HTTP status codes and meaningful responses
+- Add global exception handling using @ControllerAdvice
+- Include clean logging and JavaDoc for public methods
+- Generate unit tests for the service layer using JUnit 5 and Mockito
+
+Follow clean code principles and enterprise standards.
