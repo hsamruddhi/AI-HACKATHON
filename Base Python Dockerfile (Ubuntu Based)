@@ -1,0 +1,46 @@
+# Base OS
+FROM ubuntu:22.04
+
+# Prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update system and install required libs
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    build-essential \
+    curl \
+    wget \
+    git \
+    libpq-dev \
+    libffi-dev \
+    libssl-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set python3 as default python
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
+# Working directory
+WORKDIR /app
+
+# Install commonly needed Python packages (global)
+RUN pip install --no-cache-dir \
+    fastapi \
+    uvicorn[standard] \
+    langchain \
+    pydantic \
+    mcp \
+    openai \
+    requests \
+    numpy \
+    pandas \
+    python-dotenv
+
+# Expose a default port (for REST APIs)
+EXPOSE 8000
+
+# Default command (can be overridden by child images)
+CMD ["python", "--version"]
