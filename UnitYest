@@ -1,0 +1,37 @@
+// UserServiceTest.java
+@Test
+public void testCreateUserShouldSaveSuccessfully() {
+    // Arrange
+    User user = new User("john@example.com", "John Doe");
+    
+    // Act  
+    User savedUser = userService.createUser(user);
+    
+    // Assert
+    assertNotNull(savedUser.getId());           // ✅ Passes
+    assertEquals("john@example.com", savedUser.getEmail());  // ❌ FAILS!
+    assertEquals("John Doe", savedUser.getName());           // ❌ FAILS!
+}
+
+
+
+Error Message (Realistic output)
+
+java.lang.AssertionError: 
+Expected :john@example.com
+Actual   :JOHN@EXAMPLE.COM
+
+
+"Given this failing unit test and error message:
+[PASTE TEST + ERROR ABOVE]
+
+Suggest:
+1. 3 likely root causes 
+2. Code fix for UserService.createUser()
+3. How to add logging to isolate issue
+4. Additional test to prevent regression
+
+
+
+
+
