@@ -1,0 +1,85 @@
+Below is a short, spoken demo script you can use, followed by additional Agentic Mode use cases that work very well in a live demo.
+🎤 Short Script: GitHub Copilot Agentic Mode Demo (3–5 minutes)
+Intro (30 sec)
+“Today I’ll demonstrate GitHub Copilot Agentic Mode, where Copilot acts less like autocomplete and more like a software development agent.
+Instead of giving line-by-line suggestions, it understands a goal, plans steps, and executes changes across the codebase.”
+Example 1: Generate Codebase Using Agent (1 min)
+“Let me start with a high-level task.”
+Prompt:
+‘Create a RESTful Spring Boot application with user management, JWT authentication, and basic CRUD APIs.’
+“What Copilot Agent does now is:
+Scans the workspace
+Plans the architecture
+Creates controllers, services, entities
+Adds dependencies and configuration
+This is similar to how a junior developer would scaffold a project end-to-end.”
+Example 2: Agentic Code Review (45 sec)
+“Next, I’ll ask Copilot to review existing code.”
+Prompt:
+‘Review this service layer for performance, security, and best practices.’
+“Copilot Agent:
+Reads multiple files
+Identifies code smells
+Suggests refactoring
+Flags potential bugs and security issues
+This goes beyond linting—it’s a contextual code review.”
+Example 3: Refactoring Across Files (45 sec)
+“Now let’s try refactoring.”
+Prompt:
+‘Refactor this application to follow clean architecture and reduce duplication.’
+“The agent updates multiple files consistently, adjusts imports, and explains why changes were made.”
+Wrap-up (30 sec)
+“Agentic Mode shows how Copilot is evolving from an assistant to a collaborative developer—planning, executing, and validating work, while we stay in control.”
+🔥 Other Strong Agentic Mode Use Cases You Can Showcase
+These are high-impact and demo-friendly:
+1️⃣ Test Generation & Fixing
+Prompt:
+‘Generate unit and integration tests and fix any failing ones.’
+Why it’s powerful:
+Writes tests
+Runs them
+Fixes code if tests fail
+2️⃣ Legacy Code Modernization
+Prompt:
+‘Migrate this Java 8 code to Java 17 and update deprecated APIs.’
+Shows:
+Multi-file reasoning
+API understanding
+Enterprise relevance
+3️⃣ Documentation Agent
+Prompt:
+‘Generate README and API documentation for this project.’
+Great for:
+New projects
+Onboarding demos
+4️⃣ Bug Reproduction & Fix
+Prompt:
+‘Reproduce this NullPointerException and fix it with a test case.’
+Shows:
+Debugging
+Root cause analysis
+Validation
+5️⃣ Security Hardening
+Prompt:
+‘Identify security vulnerabilities and apply fixes.’
+Highlights:
+Secure coding
+Enterprise readiness
+6️⃣ CI/CD Assistance
+Prompt:
+‘Create a GitHub Actions pipeline with build, test, and security scan.’
+Demonstrates:
+Tool usage
+DevOps integration
+⭐ Best Combo for a Short Demo (Recommended)
+If time is limited, show only 3:
+Codebase generation
+Agentic code review
+Test generation & auto-fix
+This clearly proves agentic behavior.
+If you want, I can:
+Create ready-to-copy demo prompts
+Write a 1-minute executive version
+Tailor it specifically for Java / Python / Microservices
+Convert this into speaker notes
+Just tell me your audience and duration 🎯
