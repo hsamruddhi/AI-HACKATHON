@@ -1,0 +1,19 @@
+help me to prepare for the demo session on - "Github Copilot Agentic Al mode and HSBC PRO Extension usage". Here i want to showcase it from developer point of view, like how we can simply use Agent mode and differents LLMs and HSBC PRO extension tools (integrated with Jira, Github, Confluecne, etc) to do some development work right from Jira story to implemetaion to PR , etc. I want to make the session very interactive. How do i start the session? and execute it step by step? the total sesssion duration=30 mins. i want to complete demo in 20 mins only.
+
+
+Explain the jira story first. And tell which repo requires changes and then run just 1 prompt where it will execute all following tasks.
+The prompts for demo execution :
+
+#githubRepo Clone repository (GITHUB_REPO_URL) into the local workspace. Create branch (JIRA ID] from the default remote branch and set upstream. Push the new branch (JIRA ID> to origin.
+
+#jira_query (JIRA_ID) Explain the story scope and acceptance criteria, then implement the required changes in (GITHUB REPO NAME)
+
+#githubRepo Review local changes on branch (JIRA_ID): run unit tests, linters/formatters, static analysis, and show a unified diff of all modified files for verification before pushing commits to GitHub.
+
+#githubRepo Commit all validated changes to branch JIRA_ID) using commit message "JIRA_ID) - <commit message>" only
+
+#githubRepo Push the latest commits on branch JIRA ID> to origin
+
+#githubRepo Create and submit a final pull request from JIRA ID] to the repository's default branch. Use PR title "(JIRA_ID) - <commit message>" anc include a link to the Jira story
+
+#jira_query (JIRA_ID) Update the story with implementation notes, attach the PR link, and transition the ticket to In Review
