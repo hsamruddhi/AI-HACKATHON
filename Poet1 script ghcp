@@ -1,0 +1,107 @@
+Here is your updated script with “HSBC” replaced by “ABC”, keeping everything else exactly the same and cleanly formatted for direct use:
+Perfect — this actually makes your demo much stronger because now you are showing true Agentic execution with ONE intent-driven prompt instead of multiple commands.
+Below is your UPDATED READY-TO-SPEAK SCRIPT where:
+✅ You explain Jira first (business context)
+✅ Identify impacted repo like a real developer
+✅ Then run ONE MASTER PROMPT
+✅ Agent executes full SDLC workflow autonomously
+🎤 UPDATED DEMO SCRIPT (Developer Story → One Prompt Execution)
+🟢 0:00 – 2:00 | Opening Hook
+Say:
+“Good morning everyone.
+Let me start with a simple question — when you start working on a Jira story, what is the first thing you do?”
+(wait)
+“You read the ticket, understand scope, find the right repository, create a branch, implement changes, test, create PR, and update Jira.”
+Pause.
+“Today I’ll show how GitHub Copilot Agentic AI together with ABC PRO extension can execute this entire workflow from a single instruction.”
+🟢 2:00 – 4:00 | What Makes Agent Mode Different
+Open Copilot Agent panel.
+Say:
+“Traditional AI helps write code.
+Agentic AI understands intent and executes multi-step workflows using enterprise tools like Jira and GitHub.”
+“Think of this as assigning a task to a developer — not asking for code snippets.”
+🟢 4:00 – 7:00 | Step 1 — Start From Jira (Business First)
+👉 Open Jira ticket.
+Say:
+“Let’s begin exactly how developers work — from the Jira story.”
+Read key lines briefly.
+Then explain in your own words:
+“This story requires us to implement [short functional summary].”
+Point to acceptance criteria.
+“Acceptance criteria clearly mention:
+condition A
+validation B
+expected behavior C”
+Now transition naturally:
+“Next question every developer asks — which repository owns this change?”
+🟢 7:00 – 8:30 | Identify Repository
+Show repo name.
+Say:
+“Based on service ownership, these changes belong to the [REPO NAME] repository.”
+“Normally now I would clone repo, create branch, and start implementation manually.”
+Pause.
+Smile slightly.
+“Instead… I’ll assign this entire task to the Agent.”
+🟢 8:30 – 9:30 | Explain What Will Happen (Build Anticipation)
+Before running prompt:
+“With a single instruction, the agent will:
+set up repository and branch
+understand Jira requirements
+implement code changes
+run validations
+create commits and PR
+and finally update Jira.”
+🔥 This prepares audience for automation.
+🟢 9:30 – 18:00 | THE ONE MASTER PROMPT (Main WOW Moment)
+Paste and run your combined prompt.
+While agent works, narrate continuously:
+When cloning starts:
+“First, the agent prepares the workspace — cloning repository and creating a Jira-based branch following team conventions.”
+When Jira analysis appears:
+“Now it’s interpreting the Jira story — extracting scope and acceptance criteria before coding.”
+KEY LINE:
+“Notice I didn’t explain the codebase. The agent is building its own understanding.”
+During implementation:
+“The agent is now locating impacted files and implementing changes aligned with requirements.”
+“This is autonomous navigation of the codebase — similar to how an experienced developer explores unfamiliar modules.”
+During validation:
+“Before committing anything, it performs developer-quality checks — unit tests, linting, and static analysis.”
+“So AI is not just generating code, it is validating responsibility.”
+During commit & push:
+“Commits follow standardized Jira-linked messaging automatically — important for enterprise traceability.”
+During PR creation:
+(Slow down voice)
+“Now it prepares the pull request with context, change summary, and Jira linkage.”
+Pause intentionally.
+During Jira update:
+“And finally — updating implementation notes and moving the story to In Review.”
+Let audience see Jira transition.
+🟢 18:00 – 21:00 | Pause & Emphasize Impact
+Say slowly:
+“From requirement understanding to PR submission — executed from a single instruction.”
+Ask audience:
+“How many manual steps did we just skip?”
+Let responses come.
+🟢 21:00 – 24:00 | Developer Perspective Explanation
+“The real value here is not faster coding.
+It’s removing context switching.”
+Highlight verbally:
+✅ No manual Git operations
+✅ No copying Jira details
+✅ No PR drafting
+✅ No manual ticket updates
+🟢 24:00 – 27:00 | Interactive Discussion
+Ask:
+“Would you start delegating repetitive tasks like this?”
+“Where would this help most — feature work or bug fixes?”
+🟢 27:00 – 30:00 | Closing Line (Memorable Ending)
+“We are moving from AI-assisted coding to AI-executed development workflows.”
+Pause.
+“The developer defines intent — the agent handles execution.”
+Thank audience.
+⭐ VERY IMPORTANT DELIVERY TIP
+When you run the single prompt, lean back slightly and stop typing.
+That body language subconsciously tells audience:
+👉 “Now the AI is working.”
+It dramatically increases the impact.
+If you want, I can next give you a super-short 1-minute backup script in case time runs short but you still want a strong ending.
