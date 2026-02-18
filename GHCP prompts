@@ -19,6 +19,12 @@ Today, we’ll see how we can go from a blank starting point to a fully implemen
 The goal of this session is to demonstrate how we can reduce repetitive manual work, save development time, and improve overall productivity by leveraging automated, AI-driven workflows.
 At a high level, the AI agent will understand the requirement, analyze the codebase, suggest implementation changes, and help us move faster from requirement to delivery.
 
-
+The results shown here highlight the real productivity gains:
+Faster development cycles (~55% improvement)
+30–40% reduction in repetitive coding effort
+Better code quality and fewer defects
+Faster pull request merges
+Significant automation of documentation and repetitive tasks
+Nearly 1 hour saved per developer per day
 
 
