@@ -5,3 +5,20 @@
 #githubRepo Push the latest commits on branch JIRA ID> to origin
 #githubRepo Create and submit a final pull request from JIRA ID] to the repository's default branch. Use PR title "(JIRA_ID) - <commit message>" anc include a link to the Jira story
 #jira_query (JIRA_ID) Update the story with implementation notes, attach the PR link, and transition the ticket to In Review
+
+
+
+
+----
+
+Agentic AI, powered by VS Code Copilot Pro extensions, acts like an intelligent development assistant that connects with tools like Jira, GitHub, Confluence, Promptbook, and others to understand requirements and automatically perform real development tasks across the lifecycle.”
+
+The statistics on this slide show real industry results — faster development, better code quality, and significant time savings for developers. So this is not just about coding faster; it’s about delivering business features quicker, reducing effort, and improving overall productivity.”
+
+Today, we’ll see how we can go from a blank starting point to a fully implemented, tested, and documented solution based on a Jira story. Instead of manually handling every step, we’ll explore how AI can assist throughout the entire development lifecycle.
+The goal of this session is to demonstrate how we can reduce repetitive manual work, save development time, and improve overall productivity by leveraging automated, AI-driven workflows.
+At a high level, the AI agent will understand the requirement, analyze the codebase, suggest implementation changes, and help us move faster from requirement to delivery.
+
+
+
+
