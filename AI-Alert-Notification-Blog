@@ -1,0 +1,185 @@
+AI-powered incident response / alert management system architecture. 
+
+---
+
+🔷 What this system is doing (in one line)
+
+👉 It collects alerts from different systems, processes them using AI, and automatically helps resolve incidents or assist engineers.
+
+
+---
+
+🔶 Step-by-step flow
+
+1. Sources (Where alerts come from)
+
+Applications
+
+APM Logs
+
+Security/Infra alerts
+
+
+➡️ These generate exceptions/alerts
+
+
+---
+
+2. Event Bus / Webhook Gateway
+
+Acts as a central entry point
+
+Collects all incoming alerts and forwards them
+
+
+
+---
+
+3. Ingest & Normalize Alerts
+
+Converts different alert formats into a standard structure
+
+Makes data consistent for further processing
+
+
+
+---
+
+4. Enrich with Context
+
+Adds extra info like:
+
+Past incidents
+
+System metadata
+
+Dependencies
+
+
+
+👉 This makes alerts smarter and more meaningful
+
+
+---
+
+5. Prioritize & Deduplicate
+
+Removes duplicate alerts
+
+Assigns priority (critical / high / low)
+
+
+👉 Prevents alert noise and overload
+
+
+---
+
+6. Run Playbooks (Core Engine)
+
+This is the main AI-driven decision layer
+
+It:
+
+Decides what action to take
+
+Runs automated workflows (playbooks)
+
+
+
+---
+
+🔶 Actions triggered from Playbooks
+
+🛠️ Automation & Updates
+
+Auto ticket updates
+
+Status assignment
+
+Incident ownership
+
+
+🔔 Notifications
+
+Slack / Email alerts
+
+
+📊 Storage & Learning
+
+Stores outcomes in DB
+
+Improves future decisions (learning loop)
+
+
+
+---
+
+🔶 Supporting Tools (Right side)
+
+Log Search Tool → helps in root cause analysis
+
+JIRA Tool → ticketing
+
+Metrics DB → stores system data
+
+Rules Engine → policy-based decisions
+
+Code Search Tool (GitHub) → find related code issues
+
+Knowledge Base Tool → past solutions
+
+
+
+---
+
+🔶 Outputs (What user gets)
+
+Actionable alert feed
+
+Root cause hints
+
+Reference links
+
+JIRA tickets
+
+Escalations
+
+Analytics & drift signals
+
+
+
+---
+
+🔷 In short (easy explanation)
+
+👉 “We are building a system that automatically handles production alerts using AI — it reduces noise, finds root causes, triggers actions, and helps engineers resolve issues faster.”
+
+
+---
+
+💡 Real-world meaning
+
+Instead of engineers manually:
+
+Checking logs
+
+Creating tickets
+
+Investigating issues
+
+
+👉 This system does most of it automatically or assists intelligently
+
+
+---
+
+If you want, I can help you turn this into:
+
+🔹 Interview explanation
+
+🔹 PPT slide
+
+🔹 2–3 line crisp answer
+
+
+Just tell me 👍
