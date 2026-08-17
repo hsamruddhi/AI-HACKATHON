@@ -1,0 +1,197 @@
+Yes. This looks like an ER/data-model diagram showing how different types of exceptions are related to an underlying object/instrument, plus a separate Instrument ID Mapping table.
+
+1. Tables in the diagram
+
+SensI
+
+Fields shown:
+
+Object Id — Primary Key (PK)
+
+Object Id Type
+
+SensI Type
+
+
+This appears to be the base/master object that identifies the entity being processed.
+
+
+---
+
+Instrument Exception
+
+Fields:
+
+Exception Id — Primary Key
+
+Object Id
+
+Object Id Type
+
+
+This table represents an exception related to an instrument/object.
+
+The Object Id / Object Id Type connects it back to the corresponding object in SensI.
+
+So conceptually:
+
+SensI Object → Instrument Exception
+
+
+---
+
+Pricing Exception
+
+Fields:
+
+Exception Id — Primary Key
+
+Reference Object Id
+
+Reference Object Id Type
+
+
+This represents an exception related to pricing/reference data.
+
+The diagram shows a relationship between Instrument Exception and Pricing Exception, with Pricing Exception using a Reference Object Id.
+
+
+---
+
+Market Data Exception
+
+Fields:
+
+Exception Id — Primary Key
+
+Object Id
+
+Object Id Type
+
+
+This represents an exception related to market data.
+
+The diagram shows it connected back toward Pricing Exception.
+
+
+---
+
+Instrument ID Mapping
+
+Fields shown:
+
+CAIRA Instrument ID — Primary Key
+
+ISIN
+
+BBG Code
+
+RIC
+
+Sophis Id
+
+etc.
+
+
+This looks like a cross-reference/master mapping table.
+
+One instrument can have multiple identifiers in different systems:
+
+CAIRA Instrument ID
+        │
+        ├── ISIN
+        ├── Bloomberg Code
+        ├── RIC
+        ├── Sophis ID
+        └── Other identifiers
+
+So, for example, the same financial instrument can be identified by its CAIRA ID, ISIN, Bloomberg code, RIC, etc.
+
+
+---
+
+Written flowchart
+
+Based on the arrows visible in your image, the main relationship can be represented as:
+
+┌─────────────────────┐
+                    │        SensI        │
+                    │                     │
+                    │ PK: Object Id       │
+                    │ Object Id Type      │
+                    │ SensI Type          │
+                    └──────────┬──────────┘
+                               │
+                               │ Object Id
+                               ▼
+                    ┌─────────────────────┐
+                    │ Instrument Exception│
+                    │                     │
+                    │ PK: Exception Id    │
+                    │ Object Id           │
+                    │ Object Id Type      │
+                    └──────────┬──────────┘
+                               │
+                               │ Reference/Object
+                               ▼
+                    ┌─────────────────────┐
+                    │  Pricing Exception  │
+                    │                     │
+                    │ PK: Exception Id    │
+                    │ Reference Object Id │
+                    │ Reference Object    │
+                    │ Id Type              │
+                    └──────────▲──────────┘
+                               │
+                               │ Object Id
+                    ┌──────────┴──────────┐
+                    │ Market Data Exception│
+                    │                     │
+                    │ PK: Exception Id    │
+                    │ Object Id           │
+                    │ Object Id Type      │
+                    └─────────────────────┘
+
+
+                    SEPARATE MAPPING TABLE
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │ Instrument ID       │
+                    │ Mapping             │
+                    │                     │
+                    │ PK: CAIRA           │
+                    │     Instrument ID   │
+                    │                     │
+                    │ ISIN                │
+                    │ BBG Code            │
+                    │ RIC                 │
+                    │ Sophis ID           │
+                    │ etc.                │
+                    └─────────────────────┘
+
+In simple business terms
+
+You can think of the flow as:
+
+1. Identify an object/instrument in SensI
+↓
+2. If there is an instrument-related problem → Instrument Exception
+↓
+3. That exception can be associated with a pricing-related problem → Pricing Exception
+↑
+4. Market-data-related problems can also be associated with the pricing exception
+
+And separately:
+
+Instrument → CAIRA Instrument ID → ISIN / Bloomberg Code / RIC / Sophis ID / etc.
+
+Important observation
+
+The Instrument ID Mapping table does not appear to have a relationship line drawn to the other four tables in the screenshot. So I would not assume a database FK relationship between it and the exception tables based on this image alone.
+
+Also, the arrows in an ERD can mean different things depending on the notation/tool used. From this screenshot I can confidently identify the entities and fields, but I would avoid claiming that the arrows represent a specific FK direction without seeing the actual schema/relationship definitions.
+
+If you're using this for your trade-reporting / exception-handling architecture, the practical interpretation is essentially:
+
+Object/Instrument → Instrument Exception → Pricing Exception ← Market Data Exception, with Instrument ID Mapping providing the cross-system instrument identifiers.
