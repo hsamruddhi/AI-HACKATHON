@@ -5,3 +5,11 @@ Wedding Vows: Saturday, 12th December 2026
 Reception - An Evening in Elegance: Sunday, 13th December 2026
 
 Please ensure the bottom section includes supporting decorative elements or motifs that complement the existing theme
+'------
+
+
+want the itinerary artwork inserted into the original PDF as a separate, selectable image element, so that when you upload the PDF to Canva, you can select, move, resize, or replace the image independently.
+The intended structure is:
+Pages 1–3: Original invitation, unchanged.
+Page 4: Itinerary artwork inserted as one independent image object.
+Remaining pages: Original content, unchanged.
